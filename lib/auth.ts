@@ -1,5 +1,6 @@
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { NextAuthOptions } from "next-auth"
+import DiscordProvider from "next-auth/providers/discord"
 import EmailProvider from "next-auth/providers/email"
 import GoogleProvider from "next-auth/providers/google"
 
@@ -23,6 +24,10 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: String(process.env.GOOGLE_CLIENT_ID),
       clientSecret: String(process.env.GOOGLE_CLIENT_SECRET),
+    }),
+    DiscordProvider({
+      clientId: String(process.env.DISCORD_CLIENT_ID),
+      clientSecret: String(process.env.DISCORD_CLIENT_SECRET),
     }),
   ],
   session: {
