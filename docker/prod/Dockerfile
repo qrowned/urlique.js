@@ -15,9 +15,6 @@ RUN \
   else echo "Lockfile not found." && exit 1; \
   fi
 
-COPY prisma prisma
-RUN npx prisma generate
-
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
@@ -31,8 +28,6 @@ COPY . .
 
 ARG DATABASE_URL
 ENV DATABASE_URL=${DATABASE_URL}
-
-RUN npx prisma migrate deploy
 
 # If using npm comment out above and use below instead
 RUN npm run build
