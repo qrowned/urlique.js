@@ -1,10 +1,13 @@
 import {
+  ArrowRight,
   ChevronLeft,
   ChevronRight,
+  Info,
   Link2,
   Loader2,
   LucideProps,
   Moon,
+  Settings,
   SunMedium,
   Target,
   Twitter,
@@ -24,6 +27,9 @@ export const Icons = {
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
   user: User,
+  arrowRight: ArrowRight,
+  settings: Settings,
+  overview: Info,
   gitHub: (props: LucideProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
       <path

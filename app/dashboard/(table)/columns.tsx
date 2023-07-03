@@ -1,11 +1,11 @@
 "use client"
 
 import Link from "next/link"
-import { redirect } from "next/navigation"
 import { UrlData } from "@prisma/client"
 import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 
+import { deleteUrlEntry } from "@/lib/actions"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -21,7 +21,9 @@ export const columns: ColumnDef<UrlData>[] = [
     accessorKey: "display_id",
     header: "ID",
     cell: ({ row }) => {
-      return <Link href={row.original.url}>{row.original.display_id}</Link>
+      return (
+        <Link href={row.original.display_id}>{row.original.display_id}</Link>
+      )
     },
   },
   {
@@ -49,8 +51,6 @@ export const columns: ColumnDef<UrlData>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const user = row.original
-
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -62,13 +62,12 @@ export const columns: ColumnDef<UrlData>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => redirect("/dashboard/admin/user/" + user.id)}
+              onClick={() => {
+                deleteUrlEntry(row.original.id)
+              }}
             >
-              View user
+              Delete Link
             </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Manage roles</DropdownMenuItem>
-            <DropdownMenuItem>Remove User</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )

@@ -3,8 +3,8 @@ import { UrlData } from "@prisma/client"
 import { db } from "@/lib/db"
 import { getCurrentUser } from "@/lib/session"
 
-import { columns } from "./columns"
-import { DataTable } from "./data-table"
+import { columns } from "./(table)/columns"
+import { DataTable } from "./(table)/data-table"
 
 export default async function DashboardPage() {
   const user = await getCurrentUser()

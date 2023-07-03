@@ -10,7 +10,7 @@ export function SiteFooter() {
           href={siteConfig.links.github}
           className="max-w-lg pt-5 mt-4 text-base font-medium text-gray-400"
         >
-          &copy; Luca Bartmann 2023
+          &copy; qrowned 2023
         </Link>
         <div className="mt-4">
           <Link href="/legal" className="mr-2 text-sm max-w-lg text-gray-400">

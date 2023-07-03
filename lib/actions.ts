@@ -22,16 +22,37 @@ export async function pushUrlEntry(url: string): Promise<UrlData | undefined> {
   return data
 }
 
-export async function fetchUrlEntry(id: string) {
+export async function fetchUrlEntry(displayId: string) {
   const user = await getCurrentUser()
 
   if (!user) return
 
   const data = await db.urlData.findFirst({
-    where: { display_id: id },
+    where: { display_id: displayId },
   })
 
+  if (data) {
+    data.requests++
+
+    await db.urlData.update({
+      where: { id: data.id },
+      data: data,
+    })
+  }
+
   return data
+}
+
+export async function deleteUrlEntry(id: string) {
+  const user = await getCurrentUser()
+
+  if (!user) return
+
+  await db.urlData.delete({
+    where: {
+      id: id,
+    },
+  })
 }
 
 function makeid(length: number) {
