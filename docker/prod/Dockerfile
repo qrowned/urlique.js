@@ -32,6 +32,8 @@ COPY . .
 ARG DATABASE_URL
 ENV DATABASE_URL=${DATABASE_URL}
 
+RUN npx prisma migrate deploy
+
 # If using npm comment out above and use below instead
 RUN npm run build
 
