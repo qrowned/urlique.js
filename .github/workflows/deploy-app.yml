@@ -31,4 +31,4 @@ jobs:
           push: true
           tags: "${{ secrets.REGISTRY_URL }}/urlique-app:latest"
           cache-from: "type=registry,ref=${{ secrets.REGISTRY_URL }}/urlique-app:buildcache"
-          cache-to: "type=registry,ref=${{ secrets.REGISTRY_URL }}/urlique-app:buildcache,mode=max"
+          cache-to: "type=registry,ref=${{ secrets.REGISTRY_URL }}/urlique-app:buildcache,mode=min"
