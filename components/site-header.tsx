@@ -1,15 +1,17 @@
+"use client"
+
 import Link from "next/link"
+import { useSession } from "next-auth/react"
 
 import { siteConfig } from "@/config/site"
-import { getCurrentServerSession } from "@/lib/session"
 import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 import { Button } from "./ui/button"
 import { UserAccountNav } from "./user-account-nav"
 
-export async function SiteHeader() {
-  const session = await getCurrentServerSession()
+export function SiteHeader() {
+  const { data: session } = useSession()
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
