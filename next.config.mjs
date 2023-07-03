@@ -5,6 +5,7 @@ const nextConfig = {
     appDir: true,
     serverActions: true,
   },
+  output: "standalone",
 }
 
 export default nextConfig
