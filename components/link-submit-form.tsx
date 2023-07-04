@@ -47,7 +47,7 @@ export function LinkSubmitForm() {
     toast({
       title: "Link shortened!",
       description:
-        "Your new link is:" + siteConfig.baseUrl + "/" + data.display_id,
+        "Your new link is: " + siteConfig.baseUrl + "/" + data.display_id,
     })
   }
 

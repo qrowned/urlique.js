@@ -21,7 +21,3 @@ export default async function IndexPage() {
     </section>
   )
 }
-
-async function sendLinkRequest(link: string) {
-  console.log(link)
-}

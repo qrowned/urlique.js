@@ -11,6 +11,11 @@ export default async function DashboardPage() {
 
   const data: UrlData[] = await db.urlData.findMany({
     where: { creator_id: user?.id },
+    orderBy: [
+      {
+        created_at: "desc",
+      },
+    ],
   })
 
   if (data == null) return <p>Error</p>

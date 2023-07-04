@@ -2,7 +2,7 @@ export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
   name: "urlique",
-  baseUrl: process.env.NEXTAUTH_URL,
+  baseUrl: "https://urlique.studio",
   description: "Simple url shortener for the real guys.",
   mainNav: [
     {
