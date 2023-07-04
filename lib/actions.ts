@@ -31,16 +31,14 @@ export async function fetchUrlEntry(displayId: string) {
     where: { display_id: displayId },
   })
 
-  if (data) {
-    data.requests++
-
-    await db.urlData.update({
-      where: { id: data.id },
-      data: data,
-    })
-  }
-
   return data
+}
+
+export async function updateUrlEntry(data: UrlData) {
+  await db.urlData.update({
+    where: { id: data.id },
+    data: data,
+  })
 }
 
 export async function deleteUrlEntry(id: string) {

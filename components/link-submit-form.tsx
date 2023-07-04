@@ -1,10 +1,10 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { UrlData } from "@prisma/client"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
+import { siteConfig } from "@/config/site"
 import { pushUrlEntry } from "@/lib/actions"
 import { Button } from "@/components/ui/button"
 import {
@@ -46,7 +46,8 @@ export function LinkSubmitForm() {
 
     toast({
       title: "Link shortened!",
-      description: "You new link is: https://urlique.studio/" + data.display_id,
+      description:
+        "Your new link is:" + siteConfig.baseUrl + "/" + data.display_id,
     })
   }
 
@@ -64,7 +65,7 @@ export function LinkSubmitForm() {
               <FormControl>
                 <Input
                   className="px-40 md:px-20"
-                  placeholder="https://urlique.studio/"
+                  placeholder={siteConfig.baseUrl}
                   {...field}
                 />
               </FormControl>
