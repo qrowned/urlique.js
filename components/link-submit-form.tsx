@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { UrlData } from "@prisma/client"
 import QRCode from "qrcode.react"
@@ -54,6 +53,20 @@ export function LinkSubmitForm() {
     setCurrentData(data)
   }
 
+  function handleCopy() {
+    let url: string = generateLink()
+    navigator.clipboard.writeText(url)
+
+    toast({
+      title: "Link copied!",
+      description: "You've successfully copied the link.",
+    })
+  }
+
+  function generateLink(): string {
+    return `${siteConfig.baseUrl}/${currentData?.display_id}`
+  }
+
   return (
     <section>
       <div>
@@ -84,27 +97,25 @@ export function LinkSubmitForm() {
       </div>
       {currentData && (
         <div className="flex flex-col items-center">
-          <Link
-            target="_blank"
-            rel="noreferrer"
-            href={`${siteConfig.baseUrl}/${currentData.display_id}`}
-            className="flex mt-10"
-          >
-            <div className="flex h-10 w-10 items-center justify-center space-x-2 rounded-md border border-muted bg-muted">
-              <Icons.link className="h-5 w-5 text-foreground" />
-            </div>
+          <p className="flex mt-10">
+            <Button
+              variant="outline"
+              size="icon"
+              className="flex h-10 w-10 items-center justify-center space-x-2 rounded-md border border-muted bg-muted"
+            >
+              <Icons.copy
+                onClick={handleCopy}
+                className="h-5 w-5 text-foreground"
+              />
+            </Button>
             <div className="flex items-center">
               <div className="h-4 w-4 border-y-8 border-l-0 border-r-8 border-solid border-muted border-y-transparent"></div>
               <div className="flex h-10 items-center rounded-md border border-muted bg-muted px-4 font-medium">
-                {siteConfig.baseUrl}/{currentData.display_id}
+                {generateLink()}
               </div>
             </div>
-          </Link>
-          <QRCode
-            value={`${siteConfig.baseUrl}/${currentData.display_id}`}
-            className="mt-5"
-            size={200}
-          ></QRCode>
+          </p>
+          <QRCode value={generateLink()} className="mt-5" size={200}></QRCode>
         </div>
       )}
     </section>

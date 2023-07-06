@@ -2,6 +2,7 @@ import {
   ArrowRight,
   ChevronLeft,
   ChevronRight,
+  Copy,
   Info,
   Link2,
   Loader2,
@@ -9,7 +10,6 @@ import {
   Moon,
   Settings,
   SunMedium,
-  Target,
   Twitter,
   User,
   type Icon as LucideIcon,
@@ -22,6 +22,7 @@ export const Icons = {
   moon: Moon,
   twitter: Twitter,
   link: Link2,
+  copy: Copy,
   logo: (props: LucideProps) => (
     <svg
       width="800px"
