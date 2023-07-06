@@ -52,12 +52,6 @@ export function LinkSubmitForm() {
     }
 
     setCurrentData(data)
-
-    toast({
-      title: "Link shortened!",
-      description:
-        "Your new link is: " + siteConfig.baseUrl + "/" + data.display_id,
-    })
   }
 
   return (
