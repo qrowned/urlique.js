@@ -22,7 +22,9 @@ export const columns: ColumnDef<UrlData>[] = [
     header: "ID",
     cell: ({ row }) => {
       return (
-        <Link href={row.original.display_id}>{row.original.display_id}</Link>
+        <Link target="_blank" rel="noreferrer" href={row.original.display_id}>
+          {row.original.display_id}
+        </Link>
       )
     },
   },
