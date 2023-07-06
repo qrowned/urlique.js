@@ -98,16 +98,12 @@ export function LinkSubmitForm() {
       {currentData && (
         <div className="flex flex-col items-center">
           <p className="flex mt-10">
-            <Button
-              variant="outline"
-              size="icon"
-              className="flex h-10 w-10 items-center justify-center space-x-2 rounded-md border border-muted bg-muted"
-            >
+            <button className="flex h-10 w-10 items-center justify-center space-x-2 rounded-md border border-muted bg-muted">
               <Icons.copy
                 onClick={handleCopy}
                 className="h-5 w-5 text-foreground"
               />
-            </Button>
+            </button>
             <div className="flex items-center">
               <div className="h-4 w-4 border-y-8 border-l-0 border-r-8 border-solid border-muted border-y-transparent"></div>
               <div className="flex h-10 items-center rounded-md border border-muted bg-muted px-4 font-medium">
