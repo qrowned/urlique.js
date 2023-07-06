@@ -97,7 +97,7 @@ export function LinkSubmitForm() {
                 <FormItem>
                   <FormControl>
                     <Input
-                      className="md:px-20"
+                      className="px-20"
                       placeholder={siteConfig.baseUrl}
                       {...field}
                     />
