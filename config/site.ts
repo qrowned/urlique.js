@@ -2,7 +2,7 @@ export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
   name: "urlique",
-  baseUrl: "https://urlique.studio",
+  baseUrl: "https://beta.urlique.studio",
   description: "Simple url shortener for the real guys.",
   mainNav: [
     {

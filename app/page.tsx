@@ -15,7 +15,7 @@ export default async function IndexPage() {
           Your simple URL-Shortener generating passive income!
         </p>
       </div>
-      <div className="mt-10 flex items-center px-40">
+      <div className="mt-10 flex flex-col items-center px-40">
         <LinkSubmitForm />
       </div>
     </section>

@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function IndexPage() {
   return (
-    <div className="">
+    <div>
       <Link
         href="/"
         className={cn(
