@@ -12,9 +12,12 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+
+function downloadQrCode(data: UrlData) {
+  // TODO: Implement download qr code logic
+}
 
 export const columns: ColumnDef<UrlData>[] = [
   {
@@ -69,6 +72,13 @@ export const columns: ColumnDef<UrlData>[] = [
               }}
             >
               Delete Link
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => {
+                deleteUrlEntry(row.original.id)
+              }}
+            >
+              Download QR-Code
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

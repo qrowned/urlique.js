@@ -45,8 +45,9 @@ export function LinkSubmitForm() {
 
     if (!data) {
       toast({
+        variant: "destructive",
         title: "Error!",
-        description: "There was an error",
+        description: "Please login before you shorten a URL.",
       })
       return
     }
