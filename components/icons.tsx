@@ -3,6 +3,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Copy,
+  Download,
   Info,
   Link2,
   Loader2,
@@ -22,6 +23,7 @@ export const Icons = {
   moon: Moon,
   twitter: Twitter,
   link: Link2,
+  download: Download,
   copy: Copy,
   logo: (props: LucideProps) => (
     <svg

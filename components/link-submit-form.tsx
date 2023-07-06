@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { UrlData } from "@prisma/client"
+import html2canvas from "html2canvas"
 import QRCode from "qrcode.react"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
@@ -63,6 +64,19 @@ export function LinkSubmitForm() {
     })
   }
 
+  function handleDownload() {
+    const container = document.getElementById("qrCodeContainer")
+    if (container == null) return
+
+    html2canvas(container).then((canvas) => {
+      const dataUrl = canvas.toDataURL("image/png")
+      const downloadLink = document.createElement("a")
+      downloadLink.href = dataUrl
+      downloadLink.download = currentData?.display_id + ".png"
+      downloadLink.click()
+    })
+  }
+
   function generateLink(): string {
     return `${siteConfig.baseUrl}/${currentData?.display_id}`
   }
@@ -97,7 +111,7 @@ export function LinkSubmitForm() {
       </div>
       {currentData && (
         <div className="flex flex-col items-center">
-          <p className="flex mt-10">
+          <div className="flex mt-10">
             <button className="flex h-10 w-10 items-center justify-center space-x-2 rounded-md border border-muted bg-muted">
               <Icons.copy
                 onClick={handleCopy}
@@ -110,8 +124,21 @@ export function LinkSubmitForm() {
                 {generateLink()}
               </div>
             </div>
-          </p>
-          <QRCode value={generateLink()} className="mt-5" size={200}></QRCode>
+          </div>
+          <div className="flex items-center">
+            <QRCode
+              id="qrCodeContainer"
+              value={generateLink()}
+              className="mt-5"
+              size={200}
+            ></QRCode>
+            <button className="flex mx-5 h-10 w-10 items-center justify-center space-x-2 rounded-md border border-muted bg-muted">
+              <Icons.download
+                onClick={handleDownload}
+                className="h-5 w-5 text-foreground"
+              />
+            </button>
+          </div>
         </div>
       )}
     </section>
